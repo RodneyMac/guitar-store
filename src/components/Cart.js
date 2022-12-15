@@ -36,7 +36,6 @@ const Cart = () => {
 
   return (
     <div className="container d-flex flex-column justify-content-center align-items-center mt-2">
-      <h2 className="text-center mt-4 text-info">Cart</h2>
       {cart.cartItems.length === 0 ? (
         <div>
           <h1 className="text-warning mt-5">Su carrito está vacío</h1>
