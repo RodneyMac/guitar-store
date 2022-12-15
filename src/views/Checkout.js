@@ -88,7 +88,7 @@ const Checkout = () => {
             value={customer.customerEmail}
           />
         </div>
-        <div className="text-center">
+        <div className="text-center mt-5">
           <button className="btn btn-primary" onClick={handlePaidProduct}>
             Confirmar Pago
           </button>

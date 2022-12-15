@@ -21,7 +21,7 @@ const PurchaseConfirmation = () => {
             Número de comprobante:<div className="text-info">{item.id}</div>
           </h2>
           <h1 className="text-warning mt-5">
-            Muchas gracias por su compra {item.customerName}!
+            Muchas gracias {item.customerName} por su compra!
           </h1>
         </div>
       ))}
