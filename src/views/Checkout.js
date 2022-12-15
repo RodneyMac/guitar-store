@@ -2,17 +2,19 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { paidProducts } from "../features/cartSlice";
 import { useNavigate } from "react-router-dom";
+import { v4 as uuid } from "uuid";
+import { addUser } from "../features/userSlice";
 
 const Checkout = () => {
   const cart = useSelector((state) => state.cart);
 
-  const generateId = () => {
-    let generate = Math.floor(Math.random() * 10000);
-    return generate;
-  };
+  const [customer, setCustomer] = useState({
+    customerName: "",
+    customerEmail: "",
+  });
 
-  const [clientData, setClientData] = useState([]);
-  const [customer, setCustomer] = useState({});
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setCustomer({
@@ -21,17 +23,15 @@ const Checkout = () => {
     });
   };
 
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
   const handlePaidProduct = (e) => {
     e.preventDefault();
-    let newUser = { ...customer, id: generateId() };
-    setClientData((state) => [...state, newUser]);
-    setCustomer({});
-    console.log(clientData);
-    console.log(`Total compra: ${cart.cartTotalAmount}`, newUser);
-    console.log("Producto/s:", cart.cartItems);
+
+    dispatch(
+      addUser({
+        ...customer,
+        id: uuid(),
+      })
+    );
 
     dispatch(paidProducts());
     navigate("/purchase-confirmation");
@@ -71,21 +71,21 @@ const Checkout = () => {
           <input
             type="text"
             placeholder="Nombre"
-            id="nombre"
-            name="nombre"
+            name="customerName"
             className="form-control"
             autoFocus
             onChange={handleChange}
+            value={customer.customerName}
           />
         </div>
         <div className="mb-3">
           <input
             type="email"
             placeholder="Email"
-            id="email"
-            name="email"
+            name="customerEmail"
             className="form-control"
             onChange={handleChange}
+            value={customer.customerEmail}
           />
         </div>
         <div className="text-center">
