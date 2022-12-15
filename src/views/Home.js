@@ -1,12 +1,8 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Carousel from "../components/Carousel";
 
 const Home = () => {
-  const data = useSelector((state) => state.cart);
-  console.log(data);
-
   return (
     <div>
       <Carousel />
