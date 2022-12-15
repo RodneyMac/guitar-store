@@ -1,8 +1,18 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { addToCart } from "../features/cartSlice";
+import { useNavigate } from "react-router-dom";
 
 const Stratocaster = () => {
-  const data = useSelector((state) => state.cart);
+  const data = useSelector((state) => state.cart.guitars);
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product));
+    navigate("/cart");
+  };
 
   return (
     <div>
@@ -22,7 +32,12 @@ const Stratocaster = () => {
                     />
                     <div className="text-info mt-1">{item.model}</div>
                     <div className="text-warning">USD {item.price}</div>
-                    <button className="btn btn-primary mt-2">Agregar</button>
+                    <button
+                      className="btn btn-primary mt-2"
+                      onClick={() => handleAddToCart(item)}
+                    >
+                      Agregar
+                    </button>
                   </div>
                 </div>
               ))}
