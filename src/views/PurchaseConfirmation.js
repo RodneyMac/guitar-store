@@ -1,9 +1,16 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import { clearClient } from "../features/userSlice";
 
 const PurchaseConfirmation = () => {
-  const user = useSelector((state) => state.user);
-  console.log(user);
+  const user = useSelector((state) => state.user.userItem);
+
+  const dispatch = useDispatch();
+
+  const handleClearClient = () => {
+    dispatch(clearClient());
+  };
 
   return (
     <div className="container">
@@ -18,6 +25,11 @@ const PurchaseConfirmation = () => {
           </h1>
         </div>
       ))}
+      <div className="text-center mt-5">
+        <Link to="/" className="btn btn-primary" onClick={handleClearClient}>
+          Finalizar
+        </Link>
+      </div>
     </div>
   );
 };

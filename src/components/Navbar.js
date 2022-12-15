@@ -1,9 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { clearClient } from "../features/userSlice";
 
 const Navbar = () => {
   const { cartTotalQuantity } = useSelector((state) => state.cart);
+
+  const dispatch = useDispatch();
+
+  const handleClearClient = () => {
+    dispatch(clearClient());
+  };
 
   return (
     <div className="mb-5">
@@ -24,10 +31,18 @@ const Navbar = () => {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0 m-auto">
               <div className="m-auto d-flex">
-                <Link to="/" className="btn btn-primary mx-2">
+                <Link
+                  to="/"
+                  className="btn btn-primary mx-2"
+                  onClick={handleClearClient}
+                >
                   Inicio
                 </Link>
-                <Link to="/cart" className="btn btn-primary mx-2 d-flex">
+                <Link
+                  to="/cart"
+                  className="btn btn-primary mx-2 d-flex"
+                  onClick={handleClearClient}
+                >
                   Carrito:
                   <div className="text-warning mx-1">
                     <div className="">{cartTotalQuantity}</div>
