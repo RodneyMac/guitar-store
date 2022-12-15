@@ -92,19 +92,21 @@ const Cart = () => {
           </div>
           <div className="d-flex justify-content-center my-4">
             <button
-              className="btn btn-outline-primary mx-2"
+              className="btn btn-outline-primary mx-3"
               onClick={handleClearCart}
             >
               Vaciar carrito
             </button>
             <div className="d-flex align-items-center">
               <div className="d-flex align-items-center">
-                <span className="text-info">Sub Total:</span>
-                <span className="text-warning mx-2">
-                  {cart.cartTotalAmount}
+                <span className="text-info">
+                  Sub Total:
+                  <span className="text-warning mx-2">
+                    {cart.cartTotalAmount}
+                  </span>
                 </span>
               </div>
-              <Link to="/checkout" className="btn btn-outline-primary mx-4">
+              <Link to="/checkout" className="btn btn-outline-primary mx-2">
                 Verificar pago
               </Link>
             </div>

@@ -4,6 +4,7 @@ import Layout from "../layout/Layout";
 import Checkout from "../views/Checkout";
 import Home from "../views/Home";
 import NotFound from "../views/NotFound";
+import PurchaseConfirmation from "../views/PurchaseConfirmation";
 import Stratocaster from "../views/Stratocaster";
 
 export const router = createBrowserRouter([
@@ -30,6 +31,10 @@ export const router = createBrowserRouter([
           {
             path: "/checkout",
             element: <Checkout />,
+          },
+          {
+            path: "/purchase-confirmation",
+            element: <PurchaseConfirmation />,
           },
         ],
       },
