@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { addToCart } from "../features/cartSlice";
 import { useNavigate } from "react-router-dom";
 
-const Stratocaster = () => {
+const LesPaul = () => {
   const data = useSelector((state) => state.cart.guitars);
 
   const dispatch = useDispatch();
@@ -16,12 +16,12 @@ const Stratocaster = () => {
 
   return (
     <div>
-      <h2 className="mt-4 text-info text-center">Stratocaster</h2>
+      <h2 className="mt-4 text-info text-center">Les Paul</h2>
       <div className="mt-4">
         <div className="d-flex justify-content-center align-items-center mb-5">
           <div className="row mx-5">
             {data
-              .filter((item) => item.model === "Stratocaster")
+              .filter((item) => item.model === "Les Paul")
               .map((item) => (
                 <div key={item.id} className="col-md-6 mt-4" role="button">
                   <div className="d-flex flex-column align-items-center border rounded p-3">
@@ -49,4 +49,4 @@ const Stratocaster = () => {
   );
 };
 
-export default Stratocaster;
+export default LesPaul;
